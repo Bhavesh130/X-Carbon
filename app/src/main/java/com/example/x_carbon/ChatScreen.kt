@@ -12,7 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material3.*
@@ -165,7 +164,7 @@ fun ChatScreen() {
                                 isLoading = true
                                 coroutineScope.launch {
                                     try {
-                                        val answer = GeminiService.askQuestion(question, "User is asking about their carbon footprint.")
+                                        val answer = LocalChatbotService.getResponse(question)
                                         val assistantMessage = DashboardChatMessage(
                                             "assistant",
                                             answer.ifBlank { "Sorry, I couldn't process that. Please try again." }
