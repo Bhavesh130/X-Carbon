@@ -602,9 +602,10 @@ fun XAIScreen(report: XAIReport?) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(scrollState)
-            .padding(20.dp),
+            .padding(horizontal = 20.dp), // Removed top padding here to fix indentation
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
+        Spacer(Modifier.height(20.dp)) // Managed spacing via explicit Spacer
         // Header with model info
         XAIHeader(report)
 
@@ -624,6 +625,7 @@ fun XAIScreen(report: XAIReport?) {
 
         // Model sources (just a small footer)
         ModelSourcesCard(report)
+        Spacer(Modifier.height(20.dp))
     }
 }
 @Composable
@@ -652,7 +654,7 @@ private fun XAIHeader(report: XAIReport) {
                 ) {
                     Icon(Icons.Default.AutoAwesome, null, tint = Color(0xFF7E57C2), modifier = Modifier.size(11.dp))
                     Spacer(Modifier.width(4.dp))
-                    Text("Gemini AI", fontSize = 10.sp, color = Color(0xFF7E57C2))
+                    Text("AI Powered", fontSize = 10.sp, color = Color(0xFF7E57C2))
                 }
             }
             Spacer(Modifier.width(6.dp))
